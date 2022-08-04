@@ -1,20 +1,23 @@
-from msilib.schema import ComboBox
+
 from tkinter import *
 from tkinter import messagebox
-from tkinter.ttk import Combobox
+from tkinter.ttk import Combobox, Treeview
+from xml.etree.ElementTree import TreeBuilder
+from tkinter import ttk
+from tkinter import filedialog
 
 class menuU:
     def __init__(self):
         self.menu1 = Tk()
         self.menu1.title("PRACTICA 1")
-        self.menu1.geometry("500x450")
+        self.menu1.geometry("400x400")
         
         self.frame = Frame(self.menu1)
         self.frame.configure(bg='aquamarine')
         self.frame.place(x=0, y=0, width=500, height=500)
 
 #TEXTO DEL MENUu
-        self.texto1 = Label(self.frame, text="Lab. Lenguajes Formales y de Programacion",bg='aquamarine2',fg = "violetRed4")
+        self.texto1 = Label(self.frame, text="Lab. Lenguajes Formales y de Programacion",bg='aquamarine',fg = "violetRed4")
         self.texto1.place(x=5, y=20, width=300, height=20)
         self.texto1.configure(font=("Helvetica",10))
 
@@ -27,37 +30,71 @@ class menuU:
         self.texto3.place(x=5, y=80, width=230, height=20)
 
 #BOTONES
-        Button(self.frame, text="Cargar archivo",bg= "bisque3",fg="DeepSkyBlue4", command=self.func1).place(x=195, y=180, width=120, height=30)
-        Button(self.frame, text="Gestionar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.func2).place(x=180, y=230, width=150, height=30)
-        Button(self.frame, text="conteo de creditos", bg= "bisque3",fg="DeepSkyBlue4",command=self.Conte).place(x=180, y=280, width=150, height=30)
-        Button(self.frame, text="salir", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu1.quit).place(x=215, y=325, width=80, height=30)
+        Button(self.frame, text="Cargar archivo",bg= "bisque3",fg="DeepSkyBlue4", command=self.func1).place(x=145, y=180, width=120, height=30)
+        Button(self.frame, text="Gestionar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.func2).place(x=130, y=230, width=150, height=30)
+        Button(self.frame, text="conteo de creditos", bg= "bisque3",fg="DeepSkyBlue4",command=self.Conte).place(x=130, y=280, width=150, height=30)
+        Button(self.frame, text="salir", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu1.quit).place(x=165, y=325, width=80, height=30)
 
 #FIN MENUU
+        
         self.menu1.mainloop()
-
 #INICIO MENU2   SELECCIONAR ARCHIVO ********************************************************************************************************
     def func1(self):
         
         self.menu2 = Tk()
         self.menu2.title("seleccionar archivo")
+        
         self.menu2.geometry("400x200")
         self.menu2.configure(bg='aquamarine2')
+        
+
+        self.menu1.destroy()
+        
+
 
         self.ruta = Label(self.menu2, text="Ruta",bg='aquamarine2',fg = "violetRed4")
         self.ruta.place(x=20, y=40, width=50, height=20)
         self.ruta.configure(font=("Helvetica",11))
 
-        self.rut = Entry(self.menu2)
+        self.rut =Entry(self.menu2)
         self.rut.place(x=80, y=40, width=250, height=20)
 
 
         #BOTON SALIR MENU2
-        Button(self.menu2, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.menu2.destroy).place(x=280, y=150, width=100, height=30)
+        Button(self.menu2, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.coca).place(x=280, y=150, width=100, height=30)
 
-        Button(self.menu2, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4").place(x=160, y=80, width=100, height=30)
+        Button(self.menu2, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4", command=self.browseFiles).place(x=160, y=80, width=100, height=30)
        
-       # self.menu2.mainloop()
+    """def optener(self):
+        global arch
+        
+        obte=self.rut.get()
+        arch=open(obte,'r')
+        print(arch.read())
+        arch.close()"""
 
+    def browseFiles(self): 
+        explor = filedialog.askopenfilename(initialdir = "/",  title = "Select a File", filetypes = (("Text files", "*.txt*"), ("all files","*.*"))) 
+       
+        self.rut.insert(0,explor ) 
+        print('Archivo abierto ')        #C:/Users/ADMIIN/Desktop/holi.txt
+
+    def coca(self):
+        self.menu2.destroy()
+        self.__init__()
+
+   
+
+
+
+
+
+        #self.rut.insert(0,obte)
+        
+       # self.menu2.mainloop()
+    
+        
+        
        
 #INICIO MENU3 SELECIONAR ARCHIVO *********************************************************************************************************
     def func2(self):
@@ -66,6 +103,7 @@ class menuU:
         self.menu3.title("seleccionar archivo")
         self.menu3.geometry("400x400")
         self.menu3.configure(bg='aquamarine2')
+      
 
         Button(self.menu3, text="listar Cursos",bg= "bisque3",fg="DeepSkyBlue4",command=self.LISTAR).place(x=135, y=80, width=120, height=30)
         Button(self.menu3, text="Agregar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.agrgr).place(x=120, y=130, width=150, height=30)
@@ -117,6 +155,23 @@ class menuU:
         self.listar .geometry("700x500")
         self.listar.configure(bg='aquamarine2')
         self.menu3.destroy()
+
+        """columns = ('#1', '#2', '#3')
+
+        self.tree = ttk.Treeview(self.listar,height=10, columns=columns, show='headings')
+        self.tree.grid(row = 4, column = 4 , columnspan = 2)
+
+
+        self.tree.heading('#1', text='First Name')
+        self.tree.heading('#2', text='Last Name')
+        self.tree.heading('#3', text='Email')
+
+          
+        #self.tree = Treeview(self.listar, height=10, columns = 4 )
+       # self.tree.grid(row = 4, column = 4 , columnspan = 2)
+        #self.tree.heading("", text = "Name", anchor = CENTER)
+        #self.tree.heading("#1", text = "Price", anchor = CENTER)"""
+
 
 
         Button(self.listar, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.eles).place(x=550, y=450, width=120, height=30)
