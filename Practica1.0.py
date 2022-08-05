@@ -8,6 +8,7 @@ from tkinter import filedialog
 
 class menuU:
     def __init__(self):
+       
         self.menu1 = Tk()
         self.menu1.title("PRACTICA 1")
         self.menu1.geometry("400x400")
