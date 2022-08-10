@@ -1,107 +1,82 @@
-
-from tkinter import *
-from tkinter import messagebox
-from tkinter.ttk import Combobox, Treeview
-from xml.etree.ElementTree import TreeBuilder
 from tkinter import ttk
+from tkinter import *
+from tkinter.ttk import Combobox
 from tkinter import filedialog
-
-class menuU:
+from esqueleto import Cuerpo
+class MenuU:
     def __init__(self):
        
         self.menu1 = Tk()
         self.menu1.title("PRACTICA 1")
         self.menu1.geometry("400x400")
         
-        self.frame = Frame(self.menu1)
-        self.frame.configure(bg='aquamarine')
-        self.frame.place(x=0, y=0, width=500, height=500)
+        frame = Frame(self.menu1)
+        frame.configure(bg='aquamarine')
+        frame.place(x=0, y=0, width=500, height=500)
 
 #TEXTO DEL MENUu
-        self.texto1 = Label(self.frame, text="Lab. Lenguajes Formales y de Programacion",bg='aquamarine',fg = "violetRed4")
-        self.texto1.place(x=5, y=20, width=300, height=20)
-        self.texto1.configure(font=("Helvetica",10))
+        texto1 = Label(frame, text="Lab. Lenguajes Formales y de Programacion",bg='aquamarine',fg = "violetRed4")
+        texto1.place(x=5, y=20, width=300, height=20)
+        texto1.configure(font=("Helvetica",10))
 
-        self.texto2 = Label(self.frame, text="Nombre: Genesis Nahomi Aparicio Acan",bg='aquamarine',fg = "violetRed4")
-        self.texto2.place(x=5, y=50, width=280, height=20)
-        self.texto2.configure(font=("Helvetica",10))
+        texto2 = Label(frame, text="Nombre: Genesis Nahomi Aparicio Acan",bg='aquamarine',fg = "violetRed4")
+        texto2.place(x=5, y=50, width=280, height=20)
+        texto2.configure(font=("Helvetica",10))
 
-        self.texto3 = Label(self.frame, text="Carne del Estudiante: 202113293",bg='aquamarine',fg = "violetRed4")
-        self.texto3.configure(font=("Helvetica",10))
-        self.texto3.place(x=5, y=80, width=230, height=20)
+        texto3 = Label(frame, text="Carne del Estudiante: 202113293",bg='aquamarine',fg = "violetRed4")
+        texto3.configure(font=("Helvetica",10))
+        texto3.place(x=5, y=80, width=230, height=20)
 
 #BOTONES
-        Button(self.frame, text="Cargar archivo",bg= "bisque3",fg="DeepSkyBlue4", command=self.func1).place(x=145, y=180, width=120, height=30)
-        Button(self.frame, text="Gestionar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.func2).place(x=130, y=230, width=150, height=30)
-        Button(self.frame, text="conteo de creditos", bg= "bisque3",fg="DeepSkyBlue4",command=self.Conte).place(x=130, y=280, width=150, height=30)
-        Button(self.frame, text="salir", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu1.quit).place(x=165, y=325, width=80, height=30)
+        Button(frame, text="Cargar archivo",bg= "bisque3",fg="DeepSkyBlue4", command=self.func1).place(x=145, y=180, width=120, height=30)
+        Button(frame, text="Gestionar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.func2).place(x=130, y=230, width=150, height=30)
+        Button(frame, text="conteo de creditos", bg= "bisque3",fg="DeepSkyBlue4",command=self.Conte).place(x=130, y=280, width=150, height=30)
+        Button(frame, text="salir", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu1.quit).place(x=165, y=325, width=80, height=30)
 
 #FIN MENUU
         
         self.menu1.mainloop()
 #INICIO MENU2   SELECCIONAR ARCHIVO ********************************************************************************************************
-    def func1(self):
-        
+    def func1(self):        
         self.menu2 = Tk()
-        self.menu2.title("seleccionar archivo")
-        
+        self.menu2.title("seleccionar archivo")        
         self.menu2.geometry("400x200")
-        self.menu2.configure(bg='aquamarine2')
-        
-
-        self.menu1.destroy()
-        
-
-
-        self.ruta = Label(self.menu2, text="Ruta",bg='aquamarine2',fg = "violetRed4")
-        self.ruta.place(x=20, y=40, width=50, height=20)
-        self.ruta.configure(font=("Helvetica",11))
-
+        self.menu2.configure(bg='aquamarine2')        
+        self.menu1.destroy()        
+        ruta = Label(self.menu2, text="Ruta",bg='aquamarine2',fg = "violetRed4")
+        ruta.place(x=20, y=40, width=50, height=20)
+        ruta.configure(font=("Helvetica",11))
         self.rut =Entry(self.menu2)
         self.rut.place(x=80, y=40, width=250, height=20)
-
-
         #BOTON SALIR MENU2
         Button(self.menu2, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.coca).place(x=280, y=150, width=100, height=30)
-
-        Button(self.menu2, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4", command=self.browseFiles).place(x=160, y=80, width=100, height=30)
-       
-    """def optener(self):
-        global arch
+        Button(self.menu2, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4",command=self.browseFiles).place(x=160, y=80, width=100, height=30)
         
-        obte=self.rut.get()
-        arch=open(obte,'r')
-        print(arch.read())
-        arch.close()"""
-
-    def browseFiles(self): 
-        explor = filedialog.askopenfilename(initialdir = "/",  title = "Select a File", filetypes = (("Text files", "*.txt*"), ("all files","*.*"))) 
-       
-        self.rut.insert(0,explor ) 
-        print('Archivo abierto ')        #C:/Users/ADMIIN/Desktop/holi.txt
-
+    def browseFiles(self):
+        
+        self.explor = filedialog.askopenfilename(initialdir = "/",title = "seleccione el archivo", filetypes = (("Text files", "*.csv*"), ("all files","*.*"))) 
+              
+        self.rut.insert(0,self.explor ) 
+        scaner=Cuerpo()
+        scaner.impresion(explorar=self.explor)
+        
     def coca(self):
         self.menu2.destroy()
+        #exporto mi clase y mi metodo parametrizado 
+        #scaner=Cuerpo()
+        #hace la funcion del metodo de esa clase con los valores del metodo de arriba 
+        #scaner.impresion(explorar=self.explor)
         self.__init__()
-
-   
-
-
-
-
-
-        #self.rut.insert(0,obte)
         
-       # self.menu2.mainloop()
-    
-        
+
+
         
        
-#INICIO MENU3 SELECIONAR ARCHIVO *********************************************************************************************************
+#INICIO MENU3 Gestionar cursos ARCHIVO *********************************************************************************************************
     def func2(self):
         
         self.menu3 = Tk()
-        self.menu3.title("seleccionar archivo")
+        self.menu3.title("Gestionar curso")
         self.menu3.geometry("400x400")
         self.menu3.configure(bg='aquamarine2')
       
@@ -113,13 +88,9 @@ class menuU:
  
         #BOTON SALIR MENU3
         Button(self.menu3, text="regresar", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu3.destroy).place(x=155, y=275, width=80, height=30)
-       
-
+    
         #self.menu3.mainloop()
-
-
     #ELIMINAR CURSO-----------------------------
-
     def ELIMINI(self):
         
         self.elimi = Tk()
@@ -140,14 +111,10 @@ class menuU:
 
         Button(self.elimi, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4").place(x=160, y=80, width=80, height=30)
          # self.menu2.mainloop()
-
     #eliminar todo de menu3
     def ele(self):
         self.elimi.destroy()
         self.func2()
-
-
-
     #LISTAR CURSO--------------------------
     def LISTAR(self):
         
@@ -157,33 +124,42 @@ class menuU:
         self.listar.configure(bg='aquamarine2')
         self.menu3.destroy()
 
-        """columns = ('#1', '#2', '#3')
-
-        self.tree = ttk.Treeview(self.listar,height=10, columns=columns, show='headings')
-        self.tree.grid(row = 4, column = 4 , columnspan = 2)
-
-
-        self.tree.heading('#1', text='First Name')
-        self.tree.heading('#2', text='Last Name')
-        self.tree.heading('#3', text='Email')
-
-          
-        #self.tree = Treeview(self.listar, height=10, columns = 4 )
-       # self.tree.grid(row = 4, column = 4 , columnspan = 2)
-        #self.tree.heading("", text = "Name", anchor = CENTER)
-        #self.tree.heading("#1", text = "Price", anchor = CENTER)"""
-
-
-
         Button(self.listar, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.eles).place(x=550, y=450, width=120, height=30)
-       
+        columns =('#1','#2','#3','#4','#5','#6')
+
+        
+
+        
+#mi tablita  la cual esta enlazada a la ventana y luego a las columnas
+        self.mita=ttk.Treeview(self.listar,columns=columns)
+        #self.mita.grid(row=0,column=10,padx=10,pady=10,ipady=30)
+        self.mita.grid(row=2, column=0, columnspan=2)
+        
+        self.mita.column('#0',width=90)
+        self.mita.column('#1',width=90)
+        self.mita.column('#2',width=100)
+        self.mita.column('#3',width=100)
+        self.mita.column('#4',width=90)
+        self.mita.column('#5',width=90)
+        self.mita.column('#6',width=80)
+      
+        #definir columnas
+        #self.mita['columns']=("juan","pablo","maria")
+#encabezados de mi tablita
+        self.mita.heading('#0',text="Codigo")
+        self.mita.heading('#1',text="nombre")
+        self.mita.heading('#2',text="Pre requisitos")
+        self.mita.heading('#3',text="Opcionalidad")
+        self.mita.heading('#4',text="Semestre")
+        self.mita.heading('#5',text="Creditos")
+        self.mita.heading('#6',text="Estado")
+#fin de mi tablita
+        self.mita.pack()
+   
     def eles(self):
         self.listar.destroy()
         self.func2()
-
-
-    #AGREGAR CURSOS ------------------
-
+   #AGREGAR CURSOS ------------------
     def agrgr(self):
         
         self.agr= Tk()
@@ -192,7 +168,7 @@ class menuU:
         self.agr.configure(bg='aquamarine2')
         self.menu3.destroy()
 
-#-----------------------
+        #-----------------------
         self.cd = Label(self.agr, text="Codigo",bg='aquamarine2',fg = "violetRed4")
         self.cd.place(x=20, y=50, width=50, height=20)
         self.cd.configure(font=("Helvetica",11))
@@ -223,7 +199,7 @@ class menuU:
 
         self.ent4 = Entry(self.agr)
         self.ent4.place(x=140, y=165, width=250, height=20)
-#-----------------------
+        #-----------------------
 
         self.cre = Label(self.agr, text="Creditos        ",bg='aquamarine2',fg = "violetRed4")
         self.cre.place(x=20, y=200, width=90, height=20)
@@ -231,7 +207,7 @@ class menuU:
 
         self.ent5 = Entry(self.agr)
         self.ent5.place(x=140, y=200, width=250, height=20)
-#-----------------------          
+           #-----------------------          
         self.Esta= Label(self.agr, text="Estado         ",bg='aquamarine2',fg = "violetRed4")
         self.Esta.place(x=20, y=240, width=90, height=20)
         self.Esta.configure(font=("Helvetica",11))
@@ -372,24 +348,7 @@ class menuU:
         
         Button(self.cont, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.cont.destroy).place(x=350, y=320, width=90, height=20)
 
-
-
-
-
-
-
-
-
-               #self.txt1 = Text(self.agr)
-        #self.txt1.place(x=0, y=150, width=200, height=50)
-
-      
-
-        #Entry(self.agr,bg= "bisque3",fg="DeepSkyBlue4").place(x=550, y=450, width=120, height=30)
-
-
-
 #FIN DE LA CLASE
 
-menuU()
+MenuU()
 
