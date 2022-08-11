@@ -1,9 +1,11 @@
+from socket import MSG_WAITALL
 from tkinter import ttk
 from tkinter import *
 from tkinter.ttk import Combobox
 from tkinter import filedialog
 from esqueleto import Cuerpo
 class MenuU:
+    
     def __init__(self):
        
         self.menu1 = Tk()
@@ -53,12 +55,15 @@ class MenuU:
         Button(self.menu2, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4",command=self.browseFiles).place(x=160, y=80, width=100, height=30)
         
     def browseFiles(self):
+        global scaner
         
         self.explor = filedialog.askopenfilename(initialdir = "/",title = "seleccione el archivo", filetypes = (("Text files", "*.csv*"), ("all files","*.*"))) 
               
         self.rut.insert(0,self.explor ) 
         scaner=Cuerpo()
         scaner.impresion(explorar=self.explor)
+        
+        
         
     def coca(self):
         self.menu2.destroy()
@@ -118,43 +123,47 @@ class MenuU:
     #LISTAR CURSO--------------------------
     def LISTAR(self):
         
+        
         self.listar = Tk()
         self.listar.title("listar Cursos")
-        self.listar .geometry("700x500")
+        self.listar .geometry("550x300")
         self.listar.configure(bg='aquamarine2')
         self.menu3.destroy()
-
-        Button(self.listar, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.eles).place(x=550, y=450, width=120, height=30)
+        
+        Button(self.listar, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.eles).place(x=430, y=230, width=120, height=30)
         columns =('#1','#2','#3','#4','#5','#6')
-
-        
-
-        
 #mi tablita  la cual esta enlazada a la ventana y luego a las columnas
-        self.mita=ttk.Treeview(self.listar,columns=columns)
+        self.mita=ttk.Treeview(self.listar,columns=columns ,height=8)
         #self.mita.grid(row=0,column=10,padx=10,pady=10,ipady=30)
-        self.mita.grid(row=2, column=0, columnspan=2)
+        self.mita.grid(sticky="W")
         
-        self.mita.column('#0',width=90)
-        self.mita.column('#1',width=90)
-        self.mita.column('#2',width=100)
-        self.mita.column('#3',width=100)
-        self.mita.column('#4',width=90)
-        self.mita.column('#5',width=90)
-        self.mita.column('#6',width=80)
+        self.mita.column('#0',width=70, anchor=CENTER)
+        self.mita.column('#1',width=120, anchor=CENTER)
+        self.mita.column('#2',width=80, anchor=CENTER)
+        self.mita.column('#3',width=80, anchor=CENTER)
+        self.mita.column('#4',width=70, anchor=CENTER)
+        self.mita.column('#5',width=70, anchor=CENTER)
+        self.mita.column('#6',width=70, anchor=CENTER)
       
         #definir columnas
         #self.mita['columns']=("juan","pablo","maria")
 #encabezados de mi tablita
-        self.mita.heading('#0',text="Codigo")
-        self.mita.heading('#1',text="nombre")
-        self.mita.heading('#2',text="Pre requisitos")
-        self.mita.heading('#3',text="Opcionalidad")
-        self.mita.heading('#4',text="Semestre")
-        self.mita.heading('#5',text="Creditos")
-        self.mita.heading('#6',text="Estado")
+        self.mita.heading('#0',text="Codigo", anchor=CENTER)
+        self.mita.heading('#1',text="nombre", anchor=CENTER)
+        self.mita.heading('#2',text="Pre requisitos", anchor=CENTER)
+        self.mita.heading('#3',text="Opcionalidad", anchor=CENTER)
+        self.mita.heading('#4',text="Semestre", anchor=CENTER)
+        self.mita.heading('#5',text="Creditos", anchor=CENTER)
+        self.mita.heading('#6',text="Estado", anchor=CENTER)
+        scaner.prueba(mitad=self.mita)
+
+        self.mita.pack(side='left') # supongo que sabes usar pack
+        ejscrollbar= ttk.Scrollbar(self.listar,orient=VERTICAL,command=self.mita.yview)
+        ejscrollbar.pack(side='right',fill='y')
+        self.mita.configure(yscrollcommand=ejscrollbar.set)
+
 #fin de mi tablita
-        self.mita.pack()
+        
    
     def eles(self):
         self.listar.destroy()
