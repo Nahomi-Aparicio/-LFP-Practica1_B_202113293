@@ -5,7 +5,8 @@ from tkinter.ttk import Combobox
 from tkinter import filedialog
 from esqueleto import Cuerpo
 class MenuU:
-    global scaner
+    global scaner   
+   
     scaner=Cuerpo()
     
     def __init__(self):       
@@ -83,20 +84,11 @@ class MenuU:
         #BOTON SALIR MENU3
         Button(self.menu3, text="regresar", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu3.destroy).place(x=120, y=330, width=130, height=30)
 
-    def mostrar(self):        
-        self.most= Tk()
-        self.most.title("Agregar Cursos")
-        self.most .geometry("450x450")
-        self.most.configure(bg='aquamarine2')
-        self.menu3.destroy()
-
-
-
 #ELIMINAR CURSO-----------------------------
     def ELIMINI(self):
         
         self.elimi = Tk()
-        self.elimi.title("seleccionar archivo")
+        self.elimi.title("eliminar curso")
         self.elimi.geometry("400x200")
         self.elimi.configure(bg='aquamarine2')
         self.menu3.destroy()
@@ -111,14 +103,54 @@ class MenuU:
         #BOTON SALIR MENU2
         Button(self.elimi, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.ele).place(x=280, y=150, width=100, height=30)
 
-        Button(self.elimi, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4").place(x=160, y=80, width=80, height=30)
-#eliminar todo de menu3
+        Button(self.elimi, text="Seleccionar",bg= "bisque3",fg="DeepSkyBlue4",command=self.eliof).place(x=160, y=80, width=80, height=30)
+    
+    def eliof(self):
+        scaner.eliC(elw=self.rut1 )
+
+
+
     def ele(self):
         self.elimi.destroy()
         self.func2()
+
+#MOSTRAR CURSO   
+    def mostrar(self):  
+        
+        most= Tk()
+        most.title("Agregar Cursos")
+        most .geometry("450x450")
+        most.configure(bg='aquamarine2')
+        self.menu3.destroy()
+        cd = Label(most, text="Codigo",bg='aquamarine2',fg = "violetRed4")
+        cd.place(x=20, y=50, width=50, height=20)
+        cd.configure(font=("Helvetica",11))
+
+        self.en = Entry(most)
+        self.en.place(x=140, y=50, width=250, height=20)
+       
+
+        
+        nam = Label(most, text="nombre del curso",bg='aquamarine2',fg = "violetRed4")
+        nam.place(x=20, y=90, width=150, height=20)
+        nam.configure(font=("Helvetica",11))
+
+        nam1 = Label(most,text='m',bg='aquamarine2',fg = "violetRed4")
+        nam1.place(x=150, y=90, width=50, height=20)
+        nam1.configure(font=("Helvetica",11))
+        
+        
+
+        
+        Button(most, text="Agregar",bg= "bisque3",fg="DeepSkyBlue4",command=self.ent).place(x=210, y=300, width=80, height=30)
+        
+
+    def ent(self):
+        
+        scaner.most(mo=self.en)
+        
 #LISTAR CURSO--------------------------
     def LISTAR(self):
-        
         
         self.listar = Tk()
         self.listar.title("listar Cursos")
@@ -153,10 +185,6 @@ class MenuU:
         self.mita.heading('#6',text="Estado", anchor=CENTER)
         scaner.prueba(mitad=self.mita)
        
-        
-       
-        
-
         self.mita.pack(side='left') # supongo que sabes usar pack
         ejscrollbar= ttk.Scrollbar(self.listar,orient=VERTICAL,command=self.mita.yview)
         ejscrollbar.pack(side='right',fill='y')
@@ -172,25 +200,25 @@ class MenuU:
         self.agr .geometry("450x450")
         self.agr.configure(bg='aquamarine2')
         self.menu3.destroy()
-        #-----------------------
+#-----------------------
         self.cd = Label(self.agr, text="Codigo",bg='aquamarine2',fg = "violetRed4")
         self.cd.place(x=20, y=50, width=50, height=20)
         self.cd.configure(font=("Helvetica",11))
         self.ent1 = Entry(self.agr)
         self.ent1.place(x=140, y=50, width=250, height=20)
-       #-----------------------
+#-----------------------
         self.name = Label(self.agr, text="Nombre",bg='aquamarine2',fg = "violetRed4")
         self.name.place(x=20, y=85, width=50, height=20)
         self.name.configure(font=("Helvetica",11))
         self.ent2 = Entry(self.agr)
         self.ent2.place(x=140, y=85, width=250, height=20)
-        #-----------------------
+
         self.pre = Label(self.agr, text="Pre Requisito",bg='aquamarine2',fg = "violetRed4")
         self.pre.place(x=20, y=125, width=90, height=20)
         self.pre.configure(font=("Helvetica",11))
         self.ent3 = Entry(self.agr)
         self.ent3.place(x=140, y=125, width=250, height=20)
-        # -----------------------
+# -----------------------
         self.opc = Label(self.agr, text="Opcionalidad",bg='aquamarine2',fg = "violetRed4")
         self.opc.place(x=20, y=165, width=90, height=20)
         self.opc.configure(font=("Helvetica",11))
@@ -202,23 +230,23 @@ class MenuU:
         self.cre.configure(font=("Helvetica",11))
         self.ent5 = Entry(self.agr)
         self.ent5.place(x=140, y=200, width=250, height=20)
-        #-----------------------          
+#-----------------------          
         self.Esta= Label(self.agr, text="Estado         ",bg='aquamarine2',fg = "violetRed4")
         self.Esta.place(x=20, y=240, width=90, height=20)
         self.Esta.configure(font=("Helvetica",11))
         self.ent6 = Entry(self.agr)
         self.ent6.place(x=140, y=240, width=250, height=20)        
-        #-------------------------------------
+#-------------------------------------
         Button(self.agr, text="Agregar",bg= "bisque3",fg="DeepSkyBlue4",command=self.entradas).place(x=210, y=300, width=80, height=30)
         Button(self.agr, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.elem).place(x=310, y=400, width=100, height=30)  
-    def entradas(self):
-        scaner.optener(n1=self.ent1,n2=self.ent2,n3=self.ent3,n4=self.ent4,n5=self.ent5,n6=self.ent6)
-        
-    
+
     def elem(self):
         self.agr.destroy()
         self.func2()
- #EDITAR CURSOS ------------------
+    
+    def entradas(self):
+        scaner.optener(n1=self.ent1,n2=self.ent2,n3=self.ent3,n4=self.ent4,n5=self.ent5,n6=self.ent6)
+#EDITAR CURSOS ------------------
     def EDIT(self):        
         self.edit= Tk()
         self.edit.title("editar")
@@ -229,45 +257,49 @@ class MenuU:
         self.cd = Label(self.edit, text="Codigo",bg='aquamarine2',fg = "violetRed4")
         self.cd.place(x=20, y=50, width=50, height=20)
         self.cd.configure(font=("Helvetica",11))
-        self.ent1 = Entry(self.edit)
-        self.ent1.place(x=140, y=50, width=250, height=20)
+        self.ent11 = Entry(self.edit)
+        self.ent11.place(x=140, y=50, width=250, height=20)
         #-----------------------
         self.name = Label(self.edit, text="Nombre",bg='aquamarine2',fg = "violetRed4")
         self.name.place(x=20, y=85, width=50, height=20)
         self.name.configure(font=("Helvetica",11))
-        self.ent2 = Entry(self.edit)
-        self.ent2.place(x=140, y=85, width=250, height=20)
+        self.ent22 = Entry(self.edit)
+        self.ent22.place(x=140, y=85, width=250, height=20)
         #-----------------------
         self.pre = Label(self.edit, text="Pre Requisito",bg='aquamarine2',fg = "violetRed4")
         self.pre.place(x=20, y=125, width=90, height=20)
         self.pre.configure(font=("Helvetica",11))
-        self.ent3 = Entry(self.edit)
-        self.ent3.place(x=140, y=125, width=250, height=20)
+        self.ent33 = Entry(self.edit)
+        self.ent33.place(x=140, y=125, width=250, height=20)
         #-----------------------
         self.opc = Label(self.edit, text="Opcionalidad",bg='aquamarine2',fg = "violetRed4")
         self.opc.place(x=20, y=165, width=90, height=20)
         self.opc.configure(font=("Helvetica",11))
-        self.ent4 = Entry(self.edit)
-        self.ent4.place(x=140, y=165, width=250, height=20)
+        self.ent44 = Entry(self.edit)
+        self.ent44.place(x=140, y=165, width=250, height=20)
         #-----------------------
         self.cre = Label(self.edit, text="Creditos        ",bg='aquamarine2',fg = "violetRed4")
         self.cre.place(x=20, y=200, width=90, height=20)
         self.cre.configure(font=("Helvetica",11))
-        self.ent5 = Entry(self.edit)
-        self.ent5.place(x=140, y=200, width=250, height=20)
+        self.ent55 = Entry(self.edit)
+        self.ent55.place(x=140, y=200, width=250, height=20)
         #-----------------------          
         self.Esta= Label(self.edit, text="Estado         ",bg='aquamarine2',fg = "violetRed4")
         self.Esta.place(x=20, y=240, width=90, height=20)
         self.Esta.configure(font=("Helvetica",11))
-        self.ent6 = Entry(self.edit)
-        self.ent6.place(x=140, y=240, width=250, height=20)        
+        self.ent66 = Entry(self.edit)
+        self.ent66.place(x=140, y=240, width=250, height=20)        
         #-------------------------------------
-        Button(self.edit, text="Editar",bg= "bisque3",fg="DeepSkyBlue4").place(x=210, y=300, width=80, height=30)
+        Button(self.edit, text="Editar",bg= "bisque3",fg="DeepSkyBlue4",command=self.editor).place(x=210, y=300, width=80, height=30)
         Button(self.edit, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.elemt).place(x=310, y=400, width=100, height=30)
+
+    def editor(self):
+        scaner.edi(n11=self.ent11,n22=self.ent22,n33=self.ent33,n44=self.ent44,n55=self.ent55,n66=self.ent66)
   
     def elemt(self):
         self.edit.destroy()
-        self.func2()
+        self.func2()        
+ 
 #INICIO MENU4*********************************************************************************************************
     def Conte(self):        
         self.cont = Tk()
@@ -278,6 +310,9 @@ class MenuU:
         self.cre = Label(self.cont, text="Creditos Aprobados:",bg='aquamarine2',fg = "violetRed4")
         self.cre.place(x=10, y=40, width=150, height=20)
         self.cre.configure(font=("Helvetica",11))
+        scaner.coint1()
+
+        
         #----------------------- 
         self.crec = Label(self.cont, text="Creditos Cursados:",bg='aquamarine2',fg = "violetRed4")
         self.crec.place(x=10, y=70, width=150, height=20)
@@ -314,10 +349,16 @@ class MenuU:
         self.se=Combobox(self.cont)
         self.se.place(x=210, y=260, width=50, height=20)
         #-----------------------         
-        Button(self.cont, text="Contar",bg= "bisque3",fg="DeepSkyBlue4").place(x=280, y=260, width=80, height=20)
+        Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.sepa).place(x=280, y=260, width=80, height=20)
         #-----------------------         
         Button(self.cont, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.cont.destroy).place(x=350, y=320, width=90, height=20)
-#----------------------- 
+    def sepa(self):
+        print('ne')
+       
+
+
+
+# ------------------ 
 #FIN DE LA CLASE
 MenuU()
 
