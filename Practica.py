@@ -348,6 +348,11 @@ class MenuU:
         self.cre = Label(self.cont, text="Creditos Aprobados:",bg='aquamarine2',fg = "violetRed4")
         self.cre.place(x=10, y=40, width=150, height=20)
         self.cre.configure(font=("Helvetica",11))
+
+        self.cre1 = Label(self.cont, text="XXXXXXX",bg='aquamarine2',fg = "violetRed4")
+        self.cre1.place(x=160, y=40, width=150, height=20)
+        
+        
         
 
         
@@ -375,9 +380,9 @@ class MenuU:
         self.entt = Text(self.cont)
         self.entt.place(x=290, y=130, width=80, height=20)
                #----------------------- 
-        self.sem = Label(self.cont, text="semestre :",bg='aquamarine2',fg = "violetRed4")
-        self.sem.place(x=100, y=180, width=150, height=20)
-        self.sem.configure(font=("Helvetica",11))
+        self.sem1 = Label(self.cont, text="semestre :",bg='aquamarine2',fg = "violetRed4")
+        self.sem1.place(x=100, y=180, width=150, height=20)
+        self.sem1.configure(font=("Helvetica",11))
         #----------------------- 
         self.se=Combobox(self.cont)
         self.se.place(x=210, y=180, width=50, height=20)
@@ -391,11 +396,15 @@ class MenuU:
         self.sem = Label(self.cont, text="semestre :",bg='aquamarine2',fg = "violetRed4")
         self.sem.place(x=100, y=260, width=150, height=20)
         self.sem.configure(font=("Helvetica",11))
+
+        self.sem2 = Label(self.cont, text="XXXX",bg='aquamarine2',fg = "violetRed4")
+        self.sem2.place(x=240, y=230, width=15, height=20)
+        
         #----------------------- 
-        self.se=Combobox(self.cont)
+        self.se=Combobox(self.cont,values=["1","2","3","4","5","6","7","8","9","10"])
         self.se.place(x=210, y=260, width=50, height=20)
         #-----------------------         
-        Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.sepa).place(x=280, y=260, width=80, height=20)
+        Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma1).place(x=280, y=260, width=80, height=20)
         #-----------------------         
       
       
@@ -403,7 +412,9 @@ class MenuU:
         self.sepa()
     
     def sepa(self):
-        scaner.coint1(po1=self.crec1,poo=self.crep1)
+        scaner.coint1(poo=self.crec1,po1=self.crep1,pou=self.cre1)
+    def coma1(self):
+        scaner.boton1(poo1=self.sem2,sem11=self.se)
        
 
 

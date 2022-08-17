@@ -12,7 +12,7 @@ class Cuerpo :
     def prueba(self,mitad):
         try:
             if  lis== []:         
-                 print('---------------------')
+                 
                  lis.append(self.litt)
                  cantid=len(lis)
                  for i in range(cantid):
@@ -40,8 +40,7 @@ class Cuerpo :
         litt.append(',')
         litt.append(nu5)
         litt.append(nu6)
-        print('_____________________________')
-
+       
         if nu1 == "":
             messagebox.showerror("ERROR", "escriba el codigo del curso ") #shi
         elif nu1!="" and nu2=="":
@@ -95,7 +94,7 @@ class Cuerpo :
         litto.append(',')
         litto.append(nu55)
         litto.append(nu66)
-        print('_____________________________')
+        
 
         if nu11 == "":
             messagebox.showerror("ERROR", "escriba el codigo del curso ") #shi
@@ -201,9 +200,7 @@ class Cuerpo :
 #------------------------------cargar cursos-------------------------------------------------------------
 #falta poquito
     def impresion(self,explorar):
-        """li=[]
-        codo=[]
-        lal=[]"""
+       
         try:            
             archivo = open(explorar, "r", encoding ='utf-8')
             contenido = archivo.readline()
@@ -245,60 +242,50 @@ class Cuerpo :
             messagebox.showerror("ERROR", "no se encontro el archivo")
 
 #-------------------------------------CONTEO -------------------------------------
-    def coint1(self,poo,po1):
+    def coint1(self,poo,po1,pou):
         
         lita=[]
         lito=[]
         liu=[]
-        l2=''
-        ll=''
-        l3=''
+        
+        
         cantid=len(lis)
         if lis==[]:
-             messagebox.showerror("ERROR", "escriba el codigo del curso ")
+             messagebox.showerror("ERROR", "NO EXISTEN CURSO AUN  ")
              pass
         else:
             for i in range(cantid-1):
                 if "1" in lis[i][6] and '-1' not in lis[i][6]:
-                    
-                    myNewList = [int(string) for string in lis[i][5]]
-                    #listSum = sum(myNewList)
-                    
-                    sum1 = sum(number for number in myNewList)
-                    lita.append(sum1)
-                    ll = sum(lita)
-                    poo.configure(text=ll,font=("Helvetica",11))
-
-            for i in range(cantid-1):
-                            
+                    lita.append(lis[i][5])
+                    l3 = sum(int(ele) for ele in lita)                    
+                    poo.configure(text=l3,font=("Helvetica",11))
+            for i in range(cantid-1):                            
                 if "-1" in lis[i][6] :
-            
-                    my = [int(string) for string in lis[i][5]]
-                    #listSum = sum(myNewList)
-                    sum2 = sum(number for number in my)
-                    lito.append(sum2)
-                    l2=sum(lito)
+                    lito.append(lis[i][5])
+                    l2 = sum(int(ele) for ele in lito)
                     po1.configure(text=l2,font=("Helvetica",11))
                 
             for i in range(cantid-1):           
-                if "0" in lis[i][6] or "0\n" in lis[i][6]:
-                    my3 = [int(string) for string in lis[i][5]]
-                #listSum = sum(myNewList)
-                    sum3 = sum(number for number in my3)
-                    liu.append(sum3)
-                    l3 = sum(liu)
-                    print(lis[i] )
-                    print(l3) 
+                if "0" in lis[i][6] or "0\n" in lis[i][6]:                   
+                    liu.append(lis[i][5])                    
+                    sumu = sum(int(ele) for ele in liu)
+                    pou.configure(text=sumu,font=("Helvetica",11))
 
-        """
-        print(l3)        
-        print(l2)
-        
-        print(ll)"""
-       
 
- 
- 
+    def boton1(self,sem11,poo1):
+        se11=sem11.get()
+        litaa=[]
+        cantid=len(lis)
+
+        for i in range(cantid-1):
+            if se11 ==lis[i][4]:                    
+                litaa.append(lis[i][5])
+                l33 = sum(int(ele) for ele in litaa)                    
+                poo1.configure(text=l33,font=("Helvetica",11))
+
+           
+
+      
  # CERRAR ARCHIVO
                     
 Cuerpo()
