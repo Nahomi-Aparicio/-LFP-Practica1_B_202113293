@@ -1,4 +1,4 @@
-from tkinter import END, messagebox
+
 from tkinter import ttk
 from tkinter import *
 from tkinter.ttk import Combobox
@@ -60,10 +60,7 @@ class MenuU:
        
     def coca(self):
         self.menu2.destroy()
-        #exporto mi clase y mi metodo parametrizado 
-        #scaner=Cuerpo()
-        #hace la funcion del metodo de esa clase con los valores del metodo de arriba 
-        #scaner.impresion(explorar=self.explor)
+       
         self.__init__()
        
 #********************************INICIO MENU3 Gestionar cursos ARCHIVO *************************************************************************
@@ -74,7 +71,6 @@ class MenuU:
         self.menu3.geometry("350x400")
         self.menu3.configure(bg='aquamarine2')
       
-
         Button(self.menu3, text="listar Cursos",bg= "bisque3",fg="DeepSkyBlue4",command=self.LISTAR).place(x=120, y=80, width=130, height=30)
         Button(self.menu3, text="mostrar cursos",bg= "bisque3",fg="DeepSkyBlue4",command=self.mostrar).place(x=120, y=130, width=130, height=30)
         Button(self.menu3, text="Agregar Cursos", bg= "bisque3",fg="DeepSkyBlue4",command=self.agrgr).place(x=120, y=175, width=130, height=30)
@@ -108,8 +104,6 @@ class MenuU:
     def eliof(self):
         scaner.eliC(elw=self.rut1 )
 
-
-
     def ele(self):
         self.elimi.destroy()
         self.func2()
@@ -129,8 +123,6 @@ class MenuU:
         self.en = Entry(most)
         self.en.place(x=140, y=50, width=150, height=20)
        
-
-        
         nam = Label(most, text="nombre del curso",bg='aquamarine2',fg = "violetRed4")
         nam.place(x=20, y=90, width=120, height=20)
         nam.configure(font=("Helvetica",11))
@@ -184,9 +176,7 @@ class MenuU:
     def el1(self):
         self.most.destroy()
         self.func2()
-
-
-        
+      
 #LISTAR CURSO--------------------------
     def LISTAR(self):
         
@@ -205,15 +195,13 @@ class MenuU:
         
         self.mita.column('#0',width=70, anchor=CENTER)
         self.mita.column('#1',width=120, anchor=CENTER)
-        self.mita.column('#2',width=80, anchor=CENTER)
+        self.mita.column('#2',width=100, anchor=CENTER)
         self.mita.column('#3',width=80, anchor=CENTER)
-        self.mita.column('#4',width=70, anchor=CENTER)
-        self.mita.column('#5',width=70, anchor=CENTER)
-        self.mita.column('#6',width=70, anchor=CENTER)
+        self.mita.column('#4',width=60, anchor=CENTER)
+        self.mita.column('#5',width=60, anchor=CENTER)
+        self.mita.column('#6',width=60, anchor=CENTER)
       
-        #definir columnas
-        #self.mita['columns']=("juan","pablo","maria")
-        #encabezados de mi tablita
+        
         self.mita.heading('#0',text="Codigo", anchor=CENTER)
         self.mita.heading('#1',text="nombre", anchor=CENTER)
         self.mita.heading('#2',text="Pre requisitos", anchor=CENTER)
@@ -350,12 +338,8 @@ class MenuU:
         self.cre.configure(font=("Helvetica",11))
 
         self.cre1 = Label(self.cont, text="XXXXXXX",bg='aquamarine2',fg = "violetRed4")
-        self.cre1.place(x=160, y=40, width=150, height=20)
-        
-        
-        
-
-        
+        self.cre1.place(x=160, y=40, width=80, height=20)
+     
         #----------------------- 
         crec = Label(self.cont, text="Creditos Cursados:",bg='aquamarine2',fg = "violetRed4")
         crec.place(x=10, y=70, width=150, height=20)
@@ -376,18 +360,18 @@ class MenuU:
         self.creo = Label(self.cont, text="Creditos obligatorios hasta semestre N :",bg='aquamarine2',fg = "violetRed4")
         self.creo.place(x=10, y=130, width=280, height=20)
         self.creo.configure(font=("Helvetica",11))  
-                #  ----------------------- 
-        self.entt = Text(self.cont)
+       #  ----------------------- 
+        self.entt = Label(self.cont, text="XXXX :",bg='aquamarine2',fg = "violetRed4")
         self.entt.place(x=290, y=130, width=80, height=20)
                #----------------------- 
         self.sem1 = Label(self.cont, text="semestre :",bg='aquamarine2',fg = "violetRed4")
         self.sem1.place(x=100, y=180, width=150, height=20)
         self.sem1.configure(font=("Helvetica",11))
         #----------------------- 
-        self.se=Combobox(self.cont)
-        self.se.place(x=210, y=180, width=50, height=20)
+        self.se2=Combobox(self.cont,values=["1","2","3","4","5","6","7","8","9","10"])
+        self.se2.place(x=210, y=180, width=50, height=20)
        #-----------------------      
-        Button(self.cont, text="Contar",bg= "bisque3",fg="DeepSkyBlue4").place(x=280, y=180, width=80, height=20)
+       
         #----------------------- 
         self.cres = Label(self.cont, text="Creditos del semestre :",bg='aquamarine2',fg = "violetRed4")
         self.cres.place(x=10, y=230, width=280, height=20)
@@ -406,7 +390,7 @@ class MenuU:
         #-----------------------         
         Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma1).place(x=280, y=260, width=80, height=20)
         #-----------------------         
-      
+        Button(self.cont, text="Contar",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma2).place(x=280, y=180, width=80, height=20)
       
         Button(self.cont, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.cont.destroy).place(x=350, y=320, width=90, height=20)
         self.sepa()
@@ -415,7 +399,8 @@ class MenuU:
         scaner.coint1(poo=self.crec1,po1=self.crep1,pou=self.cre1)
     def coma1(self):
         scaner.boton1(poo1=self.sem2,sem11=self.se)
-       
+    def coma2(self):
+        scaner.boton2(sem12=self.se2,poo2=self.entt)
 
 
 

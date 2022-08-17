@@ -1,5 +1,3 @@
-
-from math import radians
 from tkinter import END, messagebox
 
 class Cuerpo :
@@ -95,7 +93,6 @@ class Cuerpo :
         litto.append(nu55)
         litto.append(nu66)
         
-
         if nu11 == "":
             messagebox.showerror("ERROR", "escriba el codigo del curso ") #shi
         elif nu11!="" and nu22=="":
@@ -115,7 +112,7 @@ class Cuerpo :
                 pass
             else:
                 for i in range (conteo1-1):
-                    if litto[i] == lis[i][0]:
+                    if nu11== lis[i][0]:
                         conteo1=len(lis) 
                         lis.remove(lis[i])     
                         lis.insert(conteo1-2,litto)
@@ -223,19 +220,6 @@ class Cuerpo :
             messagebox.showinfo("cargar archivo", "ARCHIVO CARGADO CORRECTAMENTE")
             archivo.close()
            
-            """ne=len(li)
-            for veri in range (ne-1):
-                codo.append(li[veri][0])
-            dc=set(codo)
-            lal=list(dc)
-            conteo=len(lal)
-            for i in range (conteo):
-                for a in range(ne-1):
-                    if lal[i]==li[a][0]:
-                        lis.append(li[a])
-                        
-            """
-            
         except UnicodeDecodeError:
             messagebox.showerror("Error", "el archivo no es compatible")
         except FileNotFoundError:
@@ -247,7 +231,6 @@ class Cuerpo :
         lita=[]
         lito=[]
         liu=[]
-        
         
         cantid=len(lis)
         if lis==[]:
@@ -283,9 +266,25 @@ class Cuerpo :
                 l33 = sum(int(ele) for ele in litaa)                    
                 poo1.configure(text=l33,font=("Helvetica",11))
 
-           
 
-      
+    def boton2(self,sem12,poo2):
+        se12=sem12.get()
+        litoo=[]
+        cantid=len(lis)
+        cantid2=len(lis)
+        for i in range(cantid-1):
+            if lis[i][4] <=se12 and "1" in lis[i][3]:
+        
+                print('juan')
+                             
+                litoo.append(lis[i][5])
+                l32 = sum(int(ele) for ele in litoo)
+                print(l32) 
+                print(litoo)                    
+                poo2.configure(text=l32,font=("Helvetica",11))
+                
+                pass
+   
  # CERRAR ARCHIVO
                     
 Cuerpo()
