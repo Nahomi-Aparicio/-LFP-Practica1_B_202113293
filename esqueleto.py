@@ -1,4 +1,5 @@
 
+from math import radians
 from tkinter import END, messagebox
 
 class Cuerpo :
@@ -6,6 +7,8 @@ class Cuerpo :
     lis=[]
     global litt
 # ---------------------------------------------gestionar cursos _____________________________________________________________
+
+# listar falta maso 1
     def prueba(self,mitad):
         try:
             if  lis== []:         
@@ -20,7 +23,7 @@ class Cuerpo :
                    mitad.insert("",END, text=lis[i][0], values=(lis[i][1],lis[i][2],lis[i][3],lis[i][4],lis[i][5],lis[i][6]))
         except AttributeError:
           messagebox.showerror("ERROR", "no se ningun curso")
-#maso esta            
+#maso esta   3         
     def optener(self,n1,n2,n3,n4,n5,n6):
         litt=[]
         self.litt=litt
@@ -52,9 +55,10 @@ class Cuerpo :
         #__________________________________________
         else:
             contar =0 
-            print('vaca')
+            conteo=0
             conteo1=len(lis)
             if lis==[]:
+                messagebox.showinfo("agregar curso", "CURSO AGREGADO CORRECTAMENTE")
                 pass
             else:
                 for i in range (conteo1-1):
@@ -73,20 +77,8 @@ class Cuerpo :
                             print(lis)
                             messagebox.showinfo('CURSO CARGADO',"su curso se aagregado correctamente")
                             break
-            
-                    
 
-
-                
-    def okis(self):
-        if lis==[]:           
-            pass
-        else :
-            conteo=len(lis)      
-            lis.insert(conteo-1,self.litt)
-            print(lis)
-            
-                
+# yap 4       
     def edi(self,n11,n22,n33,n44,n55,n66):
         litto=[]
         
@@ -138,24 +130,60 @@ class Cuerpo :
                             messagebox.showerror('editar',"su curso no existe")
                             break
                
-#falta mostrar       
-    def most(self,mo,s1):
+#ya esta  mostrar     2
+    def most(self,mo,muu,mee,maa,mii,paa,pee):
         mu=mo.get()
-        
+        mook=''
+        me=''
+        pe=''
+        ma=''
+        me=''
+        micho=''
+        mi=''
         cantid=len(lis)
         if mu == "":
             messagebox.showerror("ERROR", "escriba el codigo del curso ")
+        
         else:
             for i in range(cantid-1):
                 if mu==lis[i][0]:
-                     print(lis[i])
-                     
+                    print(lis[i])
+                    mook= str(lis[i][1]) 
+                    muu.configure(text=mook,font=("Helvetica",11))
+                    ma= str(lis[i][2]) 
+                    if ma=='':
+                         maa.configure(text='ninguno',font=("Helvetica",11))
+                      
+                    else:
+                         maa.configure(text='curso'+ma,font=("Helvetica",11))
 
-                     mook= str(lis[i][1]) 
-                     print(mook)
+                    mi= str(lis[i][4]) 
+                    mii.configure(text=mi,font=("Helvetica",11))
+                    
+                    micho= str(lis[i][5])  
+                    paa.configure(text=micho,font=("Helvetica",11))
+                    me=lis[i][3]
+                    if me=='1':
+                        
+                        mee.configure(text='obligatorio',font=("Helvetica",11))
+                    else:
+                        
+                        mee.configure(text='opcional',font=("Helvetica",11))
+                        
+                    pe=lis[i][6]
+                    
+                    if pe=='1' or pe=='1\n':
+                        pee.configure(text='Cursando ',font=("Helvetica",11))
+                    elif pe=='-1'or pe=='-1\n':
+                        pee.configure(text='Pendiente',font=("Helvetica",11))
+                        
+                    else:
+                        pee.configure(text='Aprobado ',font=("Helvetica",11))
+                    pass
                 else:
                     pass
-          #LISTO    
+          
+#LISTO   eliminar 5
     def eliC (self,elw):
         mu=elw.get()
         cantid=len(lis)
@@ -169,110 +197,109 @@ class Cuerpo :
                     messagebox.showerror("eliminar curso", "SU CURSO SE ELIMINO CORRECTAMENTE")
                     print(lis)
                     break
-                elif mu != lis:
-                    messagebox.showerror("eliminar curso", "SU CURSO NO EXISTE")
-                    break
                 
 #------------------------------cargar cursos-------------------------------------------------------------
+#falta poquito
     def impresion(self,explorar):
-        li=[]
+        """li=[]
+        codo=[]
+        lal=[]"""
         try:            
             archivo = open(explorar, "r", encoding ='utf-8')
             contenido = archivo.readline()
 
             while contenido != '':
-                  contenido = archivo.readline()
-                  tmp = contenido.split(",")
-                  li.append(tmp) 
-            archivo.close()
-            print('archivo cargado')
+                contenido = archivo.readline()
+                tmp = contenido.split(",")
+               
+                lis.append(tmp)
+                for p in lis:
+                    O=1
+                    for i in range(len(lis)):
+                         if lis[i][0]==p[0]:
+                            if O==2:
+                                lis.remove(p)
+                                
+                            O+=1
             
-            for e in li:
-                  if e not in lis:
-                    if e not in lis:
-                        lis.append(e)
             print(lis)
-
+            messagebox.showinfo("cargar archivo", "ARCHIVO CARGADO CORRECTAMENTE")
+            archivo.close()
+           
+            """ne=len(li)
+            for veri in range (ne-1):
+                codo.append(li[veri][0])
+            dc=set(codo)
+            lal=list(dc)
+            conteo=len(lal)
+            for i in range (conteo):
+                for a in range(ne-1):
+                    if lal[i]==li[a][0]:
+                        lis.append(li[a])
+                        
+            """
+            
         except UnicodeDecodeError:
             messagebox.showerror("Error", "el archivo no es compatible")
         except FileNotFoundError:
             messagebox.showerror("ERROR", "no se encontro el archivo")
 
-
 #-------------------------------------CONTEO -------------------------------------
-    def coint1(self):
-        print('holi')
+    def coint1(self,poo,po1):
+        
+        lita=[]
+        lito=[]
+        liu=[]
+        l2=''
+        ll=''
+        l3=''
         cantid=len(lis)
-        for i in range(cantid-1):
-                if "1" in lis[i][6] and '-1' not in lis[i][6]:
-                    print(lis[i])
-                    myNewList = [int(string) for string in lis[i][5]]
-                    #listSum = sum(myNewList)
-                    sum2 = sum(number for number in myNewList)
-                    print(f'{sum2}')
-                    
-                else:
-                    pass
- # CERRAR ARCHIVO
-                     
-Cuerpo()
-
-""" edi1=n11.get()
-        cantid=len(lis)
-        if edi1 == "":
-            messagebox.showerror("ERROR", "escriba el codigo del curso ")
+        if lis==[]:
+             messagebox.showerror("ERROR", "escriba el codigo del curso ")
+             pass
         else:
             for i in range(cantid-1):
-                if edi1==lis[i][0]:
-                     print(lis[i])
-                """
+                if "1" in lis[i][6] and '-1' not in lis[i][6]:
+                    
+                    myNewList = [int(string) for string in lis[i][5]]
+                    #listSum = sum(myNewList)
+                    
+                    sum1 = sum(number for number in myNewList)
+                    lita.append(sum1)
+                    ll = sum(lita)
+                    poo.configure(text=ll,font=("Helvetica",11))
 
-
-"""     
-          
-     
-   def F(self,mitad):
-        #cantid=len(litt)
-        for i in range(1):
-              mitad.insert("",END, text=litt[i][0], values=(litt[i][1],litt[i][2],litt[i][3],litt[i][4],litt[i][5],litt[i][6]))
-    
-
-            litt[i].append(num1)
-            litt[i].append(num2)
-            litt[i].append(num3)
-            litt[i].append(num4)
-            litt[i].append(',')
-            litt[i].append(num5)
-            litt[i].append(num6)
-
-litt[i].append(n2.get())
+            for i in range(cantid-1):
+                            
+                if "-1" in lis[i][6] :
+            
+                    my = [int(string) for string in lis[i][5]]
+                    #listSum = sum(myNewList)
+                    sum2 = sum(number for number in my)
+                    lito.append(sum2)
+                    l2=sum(lito)
+                    po1.configure(text=l2,font=("Helvetica",11))
                 
-        global list
-        list=[]
+            for i in range(cantid-1):           
+                if "0" in lis[i][6] or "0\n" in lis[i][6]:
+                    my3 = [int(string) for string in lis[i][5]]
+                #listSum = sum(myNewList)
+                    sum3 = sum(number for number in my3)
+                    liu.append(sum3)
+                    l3 = sum(liu)
+                    print(lis[i] )
+                    print(l3) 
 
-
-        while contenido != '':
-              contenido = archivo.readline()
-              tmp = contenido.split('\n')              
-              list.append(tmp)
-        print(list)
         """
+        print(l3)        
+        print(l2)
         
+        print(ll)"""
+       
 
-""""archivo = open(explorar, "r")
-        #linea = archivo.readline()
-        #lis = archivo.readline()        
-        print('archivo abierto')
-        global contenido
-        contenido = archivo.read()
-        archivo.close
-        print (contenido)
-        #print (contenido2)
-        #archivo.close
-        self.texto = contenido
-        print('archivo abierto')
-        print (contenido)"""
+ 
+ 
+ # CERRAR ARCHIVO
+                    
+Cuerpo()
 
-
-
-      

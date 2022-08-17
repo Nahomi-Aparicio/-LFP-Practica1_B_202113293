@@ -119,7 +119,7 @@ class MenuU:
         
         most= Tk()
         most.title("Agregar Cursos")
-        most .geometry("450x450")
+        most .geometry("370x350")
         most.configure(bg='aquamarine2')
         self.menu3.destroy()
         cd = Label(most, text="Codigo",bg='aquamarine2',fg = "violetRed4")
@@ -127,27 +127,65 @@ class MenuU:
         cd.configure(font=("Helvetica",11))
 
         self.en = Entry(most)
-        self.en.place(x=140, y=50, width=250, height=20)
+        self.en.place(x=140, y=50, width=150, height=20)
        
 
         
         nam = Label(most, text="nombre del curso",bg='aquamarine2',fg = "violetRed4")
-        nam.place(x=20, y=90, width=150, height=20)
+        nam.place(x=20, y=90, width=120, height=20)
         nam.configure(font=("Helvetica",11))
 
-        nam1 = Label(most,text='m',bg='aquamarine2',fg = "violetRed4")
-        nam1.place(x=150, y=90, width=50, height=20)
-        nam1.configure(font=("Helvetica",11))
+        self.nam1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.nam1.place(x=140, y=90, width=150, height=20)
         
-        
+        #self.nam1.configure(font=("Helvetica",11))
+        pre = Label(most, text="Pre requisito ",bg='aquamarine2',fg = "violetRed4")
+        pre.place(x=10, y=120, width=120, height=20)
+        pre.configure(font=("Helvetica",11))
 
+        self.pre1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.pre1.place(x=140, y=120, width=150, height=20)
+
+        opc = Label(most, text="Opcionalidad",bg='aquamarine2',fg = "violetRed4")
+        opc.place(x=10, y=150, width=120, height=20)
+        opc.configure(font=("Helvetica",11))
+
+        self.opc1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.opc1.place(x=140, y=150, width=150, height=20)
+
+        semes = Label(most, text="Semestre",bg='aquamarine2',fg = "violetRed4")
+        semes.place(x=10, y=180, width=90, height=20)
+        semes.configure(font=("Helvetica",11))
+
+        self.semes1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.semes1.place(x=140, y=180, width=150, height=20)
+
+        contado = Label(most, text="Creditos",bg='aquamarine2',fg = "violetRed4")
+        contado.place(x=10, y=210, width=90, height=20)
+        contado.configure(font=("Helvetica",11))
+
+        self.contado1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.contado1.place(x=140, y=210, width=150, height=20)
+
+        whasa = Label(most, text="Estado",bg='aquamarine2',fg = "violetRed4")
+        whasa.place(x=5, y=240, width=90, height=20)
+        whasa.configure(font=("Helvetica",11))
+
+        self.whasa1 = Label(most,text='xxxxxxxxxxxxxxxxxx',bg='aquamarine2',fg = "violetRed4")
+        self.whasa1.place(x=140, y=240, width=150, height=20)
         
-        Button(most, text="Agregar",bg= "bisque3",fg="DeepSkyBlue4",command=self.ent).place(x=210, y=300, width=80, height=30)
-        
+        Button(most, text="Agregar",bg= "bisque3",fg="DeepSkyBlue4",command=self.ent).place(x=150, y=260, width=80, height=30)
+
+        Button(most, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.el1).place(x=280, y=300, width=80, height=30)
+        self.most=most
 
     def ent(self):
-        
-        scaner.most(mo=self.en)
+        scaner.most(mo=self.en,muu=self.nam1,mee=self.opc1,maa=self.pre1,mii=self.semes1,paa= self.contado1,pee=self.whasa1)
+    def el1(self):
+        self.most.destroy()
+        self.func2()
+
+
         
 #LISTAR CURSO--------------------------
     def LISTAR(self):
@@ -310,17 +348,25 @@ class MenuU:
         self.cre = Label(self.cont, text="Creditos Aprobados:",bg='aquamarine2',fg = "violetRed4")
         self.cre.place(x=10, y=40, width=150, height=20)
         self.cre.configure(font=("Helvetica",11))
-        scaner.coint1()
+        
 
         
         #----------------------- 
-        self.crec = Label(self.cont, text="Creditos Cursados:",bg='aquamarine2',fg = "violetRed4")
-        self.crec.place(x=10, y=70, width=150, height=20)
-        self.crec.configure(font=("Helvetica",11))
+        crec = Label(self.cont, text="Creditos Cursados:",bg='aquamarine2',fg = "violetRed4")
+        crec.place(x=10, y=70, width=150, height=20)
+        crec.configure(font=("Helvetica",11))
+
+        self.crec1 = Label(self.cont, text="xxxxxxxx",bg='aquamarine2',fg = "violetRed4")
+        self.crec1.place(x=160, y=70, width=80, height=20)
+        
         #----------------------- 
         self.crep = Label(self.cont, text="Creditos Pendientes:",bg='aquamarine2',fg = "violetRed4")
         self.crep.place(x=10, y=100, width=150, height=20)
         self.crep.configure(font=("Helvetica",11))
+
+        self.crep1 = Label(self.cont, text="XXXXXXX",bg='aquamarine2',fg = "violetRed4")
+        self.crep1.place(x=160, y=100, width=80, height=20)
+        
         #----------------------- 
         self.creo = Label(self.cont, text="Creditos obligatorios hasta semestre N :",bg='aquamarine2',fg = "violetRed4")
         self.creo.place(x=10, y=130, width=280, height=20)
@@ -351,9 +397,13 @@ class MenuU:
         #-----------------------         
         Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.sepa).place(x=280, y=260, width=80, height=20)
         #-----------------------         
+      
+      
         Button(self.cont, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.cont.destroy).place(x=350, y=320, width=90, height=20)
+        self.sepa()
+    
     def sepa(self):
-        print('ne')
+        scaner.coint1(po1=self.crec1,poo=self.crep1)
        
 
 
