@@ -115,9 +115,9 @@ class Cuerpo :
             else:
                 for i in range (conteo1-1):
                     if nu11== lis[i][0]:
-                        conteo1=len(lis) 
+                        contar=len(lis) 
                         lis.remove(lis[i])     
-                        lis.insert(conteo1-2,litto)
+                        lis.insert(contar-2,litto)
                         print(lis)
                         messagebox.showinfo('editar',"su curso a sido editado")
                         break
@@ -239,7 +239,7 @@ class Cuerpo :
         
         cantid=len(lis)
         if lis==[]:
-             messagebox.showerror("ERROR", "NO EXISTEN CURSO AUN  ")
+             messagebox.showerror("ERROR", "NO EXISTEN CURSOS AUN  ")
              pass
         else:
             for i in range(cantid-1):
@@ -251,7 +251,7 @@ class Cuerpo :
                                 
                     poo.configure(text=l3,font=("Helvetica",11))
             for i in range(cantid-1):                            
-                if "-1" in lis[i][6] :
+                if "-1" in  lis[i][6] :
                     lito.append(lis[i][5])
                     l2 = sum(int(ele) for ele in lito)
                     po1.configure(text=l2,font=("Helvetica",11))
@@ -281,7 +281,7 @@ class Cuerpo :
         se12=sem12.get()
         litoo=[]
         cantid=len(lis)
-        cantid2=len(lis)
+        
         for i in range(cantid-1):
             if lis[i][4] <=se12 and "1" in lis[i][3]:
         
