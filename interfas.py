@@ -109,7 +109,7 @@ class MenuU:
     def mostrar(self):  
         
         most= Tk()
-        most.title("Agregar Cursos")
+        most.title("Mostrar Curso")
         most .geometry("370x350")
         most.configure(bg='aquamarine2')
         self.menu3.destroy()
