@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import *
 from tkinter.ttk import Combobox
 from tkinter import filedialog
-from esqueleto import Cuerpo
+from logica import Cuerpo
 class MenuU:
     global scaner   
    
@@ -35,7 +35,7 @@ class MenuU:
 #FIN MENUU
         
         self.menu1.mainloop()
-#*******************************INICIO MENU2   SELECCIONAR ARCHIVO**************************************************************************
+
     def func1(self):        
         self.menu2 = Tk()
         self.menu2.title("seleccionar archivo")        
@@ -63,7 +63,6 @@ class MenuU:
        
         self.__init__()
        
-#********************************INICIO MENU3 Gestionar cursos ARCHIVO *************************************************************************
     def func2(self):
         
         self.menu3 = Tk()
@@ -80,7 +79,6 @@ class MenuU:
         #BOTON SALIR MENU3
         Button(self.menu3, text="regresar", bg= "bisque3",fg="DeepSkyBlue4",command=self.menu3.destroy).place(x=120, y=330, width=130, height=30)
 
-#ELIMINAR CURSO-----------------------------
     def ELIMINI(self):
         
         self.elimi = Tk()
@@ -107,8 +105,7 @@ class MenuU:
     def ele(self):
         self.elimi.destroy()
         self.func2()
-
-#MOSTRAR CURSO   
+ 
     def mostrar(self):  
         
         most= Tk()
@@ -176,8 +173,7 @@ class MenuU:
     def el1(self):
         self.most.destroy()
         self.func2()
-      
-#LISTAR CURSO--------------------------
+
     def LISTAR(self):
         
         self.listar = Tk()
@@ -219,7 +215,7 @@ class MenuU:
     def eles(self):
         self.listar.destroy()
         self.func2()
-#AGREGAR CURSOS ------------------
+
     def agrgr(self):        
         self.agr= Tk()
         self.agr.title("Agregar Cursos")
@@ -261,7 +257,13 @@ class MenuU:
         self.Esta.place(x=20, y=240, width=90, height=20)
         self.Esta.configure(font=("Helvetica",11))
         self.ent6 = Entry(self.agr)
-        self.ent6.place(x=140, y=240, width=250, height=20)        
+        self.ent6.place(x=140, y=240, width=250, height=20)  
+
+        Esta= Label(self.agr, text="Semestre        ",bg='aquamarine2',fg = "violetRed4")
+        Esta.place(x=20, y=270, width=90, height=20)
+        Esta.configure(font=("Helvetica",11))
+        self.ent7 = Entry(self.agr)
+        self.ent7.place(x=140, y=270, width=250, height=20)        
 #-------------------------------------
         Button(self.agr, text="Agregar",bg= "bisque3",fg="DeepSkyBlue4",command=self.entradas).place(x=210, y=300, width=80, height=30)
         Button(self.agr, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.elem).place(x=310, y=400, width=100, height=30)  
@@ -271,8 +273,8 @@ class MenuU:
         self.func2()
     
     def entradas(self):
-        scaner.optener(n1=self.ent1,n2=self.ent2,n3=self.ent3,n4=self.ent4,n5=self.ent5,n6=self.ent6)
-#EDITAR CURSOS ------------------
+        scaner.optener(n1=self.ent1,n2=self.ent2,n3=self.ent3,n4=self.ent4,n5=self.ent5,n6=self.ent6,n7=self.ent7)
+
     def EDIT(self):        
         self.edit= Tk()
         self.edit.title("editar")
@@ -314,22 +316,27 @@ class MenuU:
         self.Esta.place(x=20, y=240, width=90, height=20)
         self.Esta.configure(font=("Helvetica",11))
         self.ent66 = Entry(self.edit)
-        self.ent66.place(x=140, y=240, width=250, height=20)        
+        self.ent66.place(x=140, y=240, width=250, height=20) 
+
+        Esta= Label(self.edit, text="Semestre         ",bg='aquamarine2',fg = "violetRed4")
+        Esta.place(x=20, y=270, width=90, height=20)
+        Esta.configure(font=("Helvetica",11))
+        self.ent77 = Entry(self.edit)
+        self.ent77.place(x=140, y=270, width=250, height=20)        
         #-------------------------------------
         Button(self.edit, text="Editar",bg= "bisque3",fg="DeepSkyBlue4",command=self.editor).place(x=210, y=300, width=80, height=30)
         Button(self.edit, text="regresar",bg= "bisque3",fg="DeepSkyBlue4",command=self.elemt).place(x=310, y=400, width=100, height=30)
 
     def editor(self):
-        scaner.edi(n11=self.ent11,n22=self.ent22,n33=self.ent33,n44=self.ent44,n55=self.ent55,n66=self.ent66)
+        scaner.edi(n11=self.ent11,n22=self.ent22,n33=self.ent33,n44=self.ent44,n55=self.ent55,n66=self.ent66,n77=self.ent77)
   
     def elemt(self):
         self.edit.destroy()
         self.func2()        
  
-#INICIO MENU4*********************************************************************************************************
     def Conte(self):        
         self.cont = Tk()
-        self.cont.title("seleccionar archivo")
+        self.cont.title("Conteo de creditos ")
         self.cont.geometry("480x400")
         self.cont.configure(bg='aquamarine2')      
         #----------------------- 
@@ -388,7 +395,7 @@ class MenuU:
         self.se=Combobox(self.cont,values=["1","2","3","4","5","6","7","8","9","10"])
         self.se.place(x=210, y=260, width=50, height=20)
         #-----------------------         
-        Button(self.cont, text="Contar1",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma1).place(x=280, y=260, width=80, height=20)
+        Button(self.cont, text="Contar",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma1).place(x=280, y=260, width=80, height=20)
         #-----------------------         
         Button(self.cont, text="Contar",bg= "bisque3",fg="DeepSkyBlue4",command=self.coma2).place(x=280, y=180, width=80, height=20)
       
@@ -402,9 +409,5 @@ class MenuU:
     def coma2(self):
         scaner.boton2(sem12=self.se2,poo2=self.entt)
 
-
-
-# ------------------ 
-#FIN DE LA CLASE
 MenuU()
 

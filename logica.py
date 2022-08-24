@@ -20,9 +20,9 @@ class Cuerpo :
                 for i in range(cantisd-1):
                    mitad.insert("",END, text=lis[i][0], values=(lis[i][1],lis[i][2],lis[i][3],lis[i][4],lis[i][5],lis[i][6]))
         except AttributeError:
-          messagebox.showerror("ERROR", "no se ningun curso")
+          messagebox.showerror("ERROR", "no se encontro ningun curso")
 #maso esta   3         
-    def optener(self,n1,n2,n3,n4,n5,n6):
+    def optener(self,n1,n2,n3,n4,n5,n6,n7):
         litt=[]
         self.litt=litt
         nu1=n1.get()
@@ -31,11 +31,12 @@ class Cuerpo :
         nu4=n4.get()
         nu5=n5.get()
         nu6=n6.get()
+        nu7=n7.get()
         litt.append(nu1)
         litt.append(nu2)
         litt.append(nu3)        
         litt.append(nu4)
-        litt.append(',')
+        litt.append(nu7)
         litt.append(nu5)
         litt.append(nu6)
        
@@ -72,11 +73,11 @@ class Cuerpo :
                         if contar ==(conteo1-1):
                             lis.insert(conteo-1,self.litt)
                             print(lis)
-                            messagebox.showinfo('CURSO CARGADO',"su curso se aagregado correctamente")
+                            messagebox.showinfo('CURSO CARGADO',"su curso se agregado correctamente")
                             break
 
 # yap 4       
-    def edi(self,n11,n22,n33,n44,n55,n66):
+    def edi(self,n11,n22,n33,n44,n55,n66,n77):
         litto=[]
         
         nu11=n11.get()
@@ -85,11 +86,12 @@ class Cuerpo :
         nu44=n44.get()
         nu55=n55.get()
         nu66=n66.get()
+        nu77=n77.get()
         litto.append(nu11)
         litto.append(nu22)
         litto.append(nu33)        
         litto.append(nu44)
-        litto.append(',')
+        litto.append(nu77)
         litto.append(nu55)
         litto.append(nu66)
         
@@ -190,7 +192,7 @@ class Cuerpo :
             for i in range(cantid-1):
                 if mu==lis[i][0]:
                     lis.remove(lis[i])
-                    messagebox.showerror("eliminar curso", "SU CURSO SE ELIMINO CORRECTAMENTE")
+                    messagebox.showinfo("eliminar curso", "SU CURSO SE ELIMINO CORRECTAMENTE")
                     print(lis)
                     break
                 
@@ -198,13 +200,16 @@ class Cuerpo :
 #falta poquito
     def impresion(self,explorar):
        
-        try:            
-            archivo = open(explorar, "r", encoding ='utf-8')
+        try: 
+            
+                       
+            archivo = open(explorar, 'r',encoding ="utf-8" )#encoding ="utf-8"
             contenido = archivo.readline()
 
             while contenido != '':
                 contenido = archivo.readline()
                 tmp = contenido.split(",")
+                print(tmp)
                
                 lis.append(tmp)
                 for p in lis:
@@ -240,7 +245,10 @@ class Cuerpo :
             for i in range(cantid-1):
                 if "1" in lis[i][6] and '-1' not in lis[i][6]:
                     lita.append(lis[i][5])
-                    l3 = sum(int(ele) for ele in lita)                    
+                    
+                    
+                    l3 = sum(int(ele) for ele in lita)       
+                                
                     poo.configure(text=l3,font=("Helvetica",11))
             for i in range(cantid-1):                            
                 if "-1" in lis[i][6] :
@@ -252,6 +260,8 @@ class Cuerpo :
                 if "0" in lis[i][6] or "0\n" in lis[i][6]:                   
                     liu.append(lis[i][5])                    
                     sumu = sum(int(ele) for ele in liu)
+                    print(liu)
+                    print(sumu) 
                     pou.configure(text=sumu,font=("Helvetica",11))
 
 
